@@ -143,6 +143,7 @@ function fontUpdate(event) {
               class: "font",
               href: "https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
           }).appendTo("head");
+            break;
     }
 }
 
