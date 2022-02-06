@@ -391,7 +391,7 @@ Chat = {
                 linesToDelete--;
             }
             const scrollWidth = $("#chat_container").prop("scrollWidth");
-            $("#chat_container").animate({scrollLeft: scrollWidth}, 500); 
+            $("#chat_container").animate({scrollLeft: scrollWidth}, 1300); 
         } else if (Chat.info.fade) {
             var messageTime = $('.chat_line').eq(0).data('time');
             if ((Date.now() - messageTime) / 1000 >= Chat.info.fade) {
