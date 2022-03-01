@@ -28,7 +28,14 @@ function escapeHtml(message) {
 }
 
 function TwitchAPI(url) {
-    return $.getJSON(url + (url.search(/\?/) > -1 ? '&' : '?') + 'client_id=p31p8buadkrrel3fdzq7268cq6q7li');
+    return $.ajax({
+        beforeSend: function(request) {
+            request.setRequestHeader("Client-Id", "4sbuljjdkoerewwv3y1youpeex9f02");
+            request.setRequestHeader("Authorization", "Bearer olqonsmt1sdkw66ln2q9nahpsoe5rb");
+        },
+        dataType: "json",
+        url: "https://api.twitch.tv/helix" + url
+    });
 }
 
 Chat = {
