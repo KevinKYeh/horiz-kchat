@@ -115,7 +115,7 @@ Chat = {
     },
 
     load: function(callback) {
-        TwitchAPI('https://api.twitch.tv/v5/users?login=' + Chat.info.channel).done(function(res) {
+        TwitchAPI('/users?login=' + Chat.info.channel).done(function(res) {
             Chat.info.channelID = res.users[0]._id;
             Chat.loadEmotes(Chat.info.channelID);
 
@@ -356,7 +356,7 @@ Chat = {
             }
 
             // Load cheers images
-            TwitchAPI("https://api.twitch.tv/v5/bits/actions?channel_id=" + Chat.info.channelId).done(function(res) {
+            TwitchAPI("/bits/cheermotes?broadcaster_id=" + Chat.info.channelId).done(function(res) {
                 res.actions.forEach(action => {
                     Chat.info.cheers[action.prefix] = {}
                     action.tiers.forEach(tier => {
