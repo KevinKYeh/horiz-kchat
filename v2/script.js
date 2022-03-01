@@ -28,14 +28,7 @@ function escapeHtml(message) {
 }
 
 function TwitchAPI(url) {
-    return $.ajax({
-        beforeSend: function(request) {
-            request.setRequestHeader("Client-Id", "4sbuljjdkoerewwv3y1youpeex9f02");
-            request.setRequestHeader("Authorization", "Bearer olqonsmt1sdkw66ln2q9nahpsoe5rb");
-        },
-        dataType: "json",
-        url: "https://api.twitch.tv/helix" + url
-    });
+    return $.getJSON(url + (url.search(/\?/) > -1 ? '&' : '?') + 'client_id=4sbuljjdkoerewwv3y1youpeex9f02');
 }
 
 Chat = {
@@ -115,7 +108,7 @@ Chat = {
     },
 
     load: function(callback) {
-        TwitchAPI('/users?login=' + Chat.info.channel).done(function(res) {
+        TwitchAPI('https://api.twitch.tv/v5/users?login=' + Chat.info.channel).done(function(res) {
             Chat.info.channelID = res.users[0]._id;
             Chat.loadEmotes(Chat.info.channelID);
 
@@ -356,7 +349,7 @@ Chat = {
             }
 
             // Load cheers images
-            TwitchAPI("/bits/cheermotes?broadcaster_id=" + Chat.info.channelId).done(function(res) {
+            TwitchAPI("https://api.twitch.tv/v5/bits/actions?channel_id=" + Chat.info.channelId).done(function(res) {
                 res.actions.forEach(action => {
                     Chat.info.cheers[action.prefix] = {}
                     action.tiers.forEach(tier => {
