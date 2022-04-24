@@ -44,8 +44,8 @@ function escapeHtml(message) {
 function myAPI(url) {
     return $.ajax({
         beforeSend: function(request) {
-            request.setRequestHeader("Client-Id", "jtximkxdxjajpu74t7s7nr3b0x2k94");
-            request.setRequestHeader("Authorization", "Bearer jt7nn147iwo2wo503vj83x8lut0uev");
+            request.setRequestHeader("Client-Id", "4sbuljjdkoerewwv3y1youpeex9f02");
+            request.setRequestHeader("Authorization", "Bearer olqonsmt1sdkw66ln2q9nahpsoe5rb");
         },
         dataType: "json",
         url: "https://api.twitch.tv/helix" + url
